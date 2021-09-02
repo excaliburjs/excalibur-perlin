@@ -1,0 +1,45 @@
+{
+  "name": "@excaliburjs/plugin-perlin",
+  "version": "0.25.0-alpha.1",
+  "description": "Perlin noise generator for the Excalibur game engine",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.test.js --open",
+    "watch": "webpack --progress --watch",
+    "build": "cross-env NODE_ENV=production webpack",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "karma start",
+    "test:integration": "webpack --config webpack.config.test.js && tsc ./test/integration/tests.ts && node ./test/integration/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/excaliburjs/excalibur-perlin.git"
+  },
+  "author": "Erik Onarheim",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/excaliburjs/excalibur-perlin/issues"
+  },
+  "homepage": "https://github.com/excaliburjs/excalibur-perlin#readme",
+  "devDependencies": {
+    "@types/jasmine": "3.8.2",
+    "@types/webpack-env": "1.16.2",
+    "cross-env": "7.0.3",
+    "excalibur": "0.25.0-alpha.181",
+    "excalibur-jasmine": "0.2.0",
+    "jasmine-core": "3.9.0",
+    "karma": "6.3.4",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-jasmine": "4.0.1",
+    "karma-webpack": "5.0.0",
+    "node-static": "0.7.11",
+    "pixelmatch": "5.2.1",
+    "pngjs": "6.0.0",
+    "puppeteer": "10.2.0",
+    "ts-loader": "9.2.5",
+    "typescript": "4.4.2",
+    "webpack": "5.51.2",
+    "webpack-cli": "4.8.0",
+    "webpack-dev-server": "4.1.0"
+  }
+}

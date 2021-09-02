@@ -1,0 +1,10 @@
+.*
+src
+test
+node_modules
+coverage
+example
+test
+!dist/*
+**/webpack.config.js
+**/webpack.config.test.js
