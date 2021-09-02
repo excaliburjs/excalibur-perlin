@@ -2,7 +2,8 @@
   "name": "@excaliburjs/plugin-perlin",
   "version": "0.25.0-alpha.1",
   "description": "Perlin noise generator for the Excalibur game engine",
-  "main": "index.js",
+  "main": "dist/excalibur-perlin.min.js",
+  "typings": "dist/src/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.test.js --open",
     "watch": "webpack --progress --watch",
@@ -41,5 +42,8 @@
     "webpack": "5.51.2",
     "webpack-cli": "4.8.0",
     "webpack-dev-server": "4.1.0"
+  },
+  "peerDependencies": {
+    "excalibur": "0.25.0-alpha.181"
   }
 }
