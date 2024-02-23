@@ -26,7 +26,7 @@
     "@types/jasmine": "3.10.18",
     "@types/webpack-env": "1.18.4",
     "cross-env": "7.0.3",
-    "excalibur": "0.25.1",
+    "excalibur": "0.29.1",
     "excalibur-jasmine": "0.2.0",
     "jasmine-core": "3.99.1",
     "karma": "6.4.2",
@@ -44,6 +44,6 @@
     "webpack-dev-server": "4.13.3"
   },
   "peerDependencies": {
-    "excalibur": "0.25.1"
+    "excalibur": "0.29.1"
   }
 }
