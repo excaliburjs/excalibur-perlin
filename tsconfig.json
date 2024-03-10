@@ -2,11 +2,12 @@
     "compilerOptions": {
        "moduleResolution": "node",
        "strict": true,
-       "target": "es2015",
+       "target": "es2018",
        "lib": ["DOM", "ES2019.Array"],
        "declaration": true,
        "outDir": "./dist",
        "sourceMap": true,
+       "skipLibCheck": true,
        "paths": {
           "@excalibur-perlin": ["./src/"]
        }
