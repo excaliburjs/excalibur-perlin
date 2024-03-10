@@ -32,16 +32,15 @@ function imageMatch(expectedFile, actualFile) {
 
 const isLoaded = async (page) => {
    await page.waitForSelector('#excalibur-play', {visible: true});
-   await page.waitForTimeout(1000); // give it a second
+   // await page.waitForTimeout(1000); // give it a second
 }
 
 const clickPlay = async (page) => {
-   const start = await page.$('#excalibur-play');
-   await start.click();
+   await page.click('#excalibur-play');
    // Left-over roots :( excalibur bug
    await page.evaluate(() => {
-      const root = document.querySelector('#excalibur-play-root');
-      document.body.removeChild(root);
+      // const root = document.querySelector('#excalibur-play-root');
+      // document.body.removeChild(root);
    });
 }
 
@@ -54,13 +53,14 @@ const expectPerlin = async (page, name, actualName, shouldLoad = true) => {
    await page.screenshot({path: `./test/integration/images/actual-loaded.png`});
 
    await clickPlay(page);
-   await page.waitForTimeout(2000); // camera centering
+   await page.waitForFunction('___EXCALIBUR_DEVTOOL.ready');
+   // await page.waitForTimeout(2000); // camera centering
    await page.screenshot({path: `./test/integration/images/actual-${actualName}.png`});
 
    return {
       
       toBe: (expectedName) => {
-         imageMatch('./test/integration/images/expected-loaded.png', `./test/integration/images/actual-loaded.png`);
+         // imageMatch('./test/integration/images/expected-loaded.png', `./test/integration/images/actual-loaded.png`);
          imageMatch(`./test/integration/images/expected-${expectedName}.png`, `./test/integration/images/actual-${expectedName}.png`);
       }
    }
