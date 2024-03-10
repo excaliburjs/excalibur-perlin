@@ -349,7 +349,7 @@ export class PerlinGenerator {
   public octaves: number = 1;
 
   constructor(options?: PerlinOptions) {
-    options = Util.extend({}, this._defaultPerlinOptions, options);
+    options = {...this._defaultPerlinOptions, ...options};
 
     this.persistance = options.persistance ?? this.persistance;
     this.amplitude = options.amplitude ?? this.amplitude;
@@ -370,15 +370,15 @@ export class PerlinGenerator {
   }
 
   /**
-   * Generates 1-Dimensional perlin noise given an x and generates noises values between [0, 1].
+   * Generates 1-Dimensional perlin noise given an x between [0-1] and generates noises values between [0, 1].
    */
   public noise(x: number): number;
   /**
-   * Generates 2-Dimensional perlin noise given an (x, y) and generates noise values between [0, 1]
+   * Generates 2-Dimensional perlin noise given an (x, y) between [0-1] and generates noise values between [0, 1]
    */
   public noise(x: number, y: number): number;
   /**
-   * Generates 3-Dimensional perlin noise given an (x, y, z) and generates noise values between [0, 1]
+   * Generates 3-Dimensional perlin noise given an (x, y, z) between [0-1] and generates noise values between [0, 1]
    */
   public noise(x: number, y: number, z: number): number;
   public noise(): number {
@@ -536,11 +536,11 @@ export class PerlinGenerator {
  */
 export class PerlinDrawer2D {
   public colorFcn: (val: number) => Color = (val: number) => {
-    return val < 125 ? Color.Black : Color.White;
+    return val < .5 ? Color.Black : Color.White;
   };
   /**
    * @param generator - An existing perlin generator
-   * @param colorFcn - A color function that takes a value between [0, 255] derived from the perlin generator, and returns a color
+   * @param colorFcn - A color function that takes a perlin sample [0, 1] derived from the perlin generator, and returns a color
    */
   constructor(public generator: PerlinGenerator, colorFcn?: (val: number) => Color) {
     if (colorFcn) {
@@ -570,10 +570,9 @@ export class PerlinDrawer2D {
     const imageData = ctx.getImageData(x, y, width, height);
     for (let j = 0; j < height; j++) {
       for (let i = 0; i < width; i++) {
-        const val = grid[i + width * j];
-        const c = Math.floor(val * 255) & 0xff;
         const pixel = (i + j * imageData.width) * 4;
-        const color = this.colorFcn(c);
+        const val = grid[i + width * j];
+        const color = this.colorFcn(val);
 
         imageData.data[pixel] = color.r;
         imageData.data[pixel + 1] = color.g;
