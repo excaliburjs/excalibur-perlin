@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/jasmine": "5.1.4",
     "@types/node": "20.12.10",
-    "@types/webpack-env": "1.18.4",
+    "@types/webpack-env": "1.18.5",
     "cross-env": "7.0.3",
     "excalibur": "~0.29.0",
     "excalibur-jasmine": "0.3.4",
