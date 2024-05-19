@@ -50,7 +50,7 @@ const drawer = new PerlinDrawer2D(generator, (value: number) => {
         ex.Color.Blue,
         ex.Color.Violet
     ]
-    const colorIndex = Math.floor((val * rainbow.length));
+    const colorIndex = Math.floor((value * rainbow.length));
     return rainbow[colorIndex];
 });
 
@@ -84,7 +84,7 @@ const drawer = new PerlinDrawer2D(generator, (value: number) => {
         ex.Color.Blue,
         ex.Color.Violet
     ]
-    const colorIndex = Math.floor((val * rainbow.length));
+    const colorIndex = Math.floor((value * rainbow.length));
     return rainbow[colorIndex];
 });
 
