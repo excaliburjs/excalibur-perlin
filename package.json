@@ -29,7 +29,7 @@
     "cross-env": "7.0.3",
     "excalibur": "~0.29.0",
     "excalibur-jasmine": "0.3.4",
-    "jasmine-core": "5.1.2",
+    "jasmine-core": "5.2.0",
     "karma": "6.4.3",
     "karma-chrome-launcher": "3.2.0",
     "karma-jasmine": "5.1.0",
