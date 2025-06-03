@@ -26,6 +26,8 @@ const generator = new PerlinGenerator({
 
 You can use the generator to sample perlin noise with the given configuration.
 
+NOTE: (x,y,x) input parameters are expected to be normalized between 0 - 1.0
+
 * `generator.noise(x)` - Sample 1D noise, outputs a value [0, 1]
 * `generator.noise(x, y)` - Sample 2D noise, outputs a value [0, 1]
 * `generator.noise(x, y, z)` - Sample 3D noise, , outputs a value [0, 1]
