@@ -71,6 +71,7 @@ const expectPerlin = async (page, name, actualName, shouldLoad = true) => {
         const browser = await puppeteer.launch({
             dumpio: false,
             args: [
+							'--no-sandobx',
               '--window-size=800,600',
             ],
           });
