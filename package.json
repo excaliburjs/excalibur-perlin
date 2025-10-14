@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/excaliburjs/excalibur-perlin#readme",
   "devDependencies": {
-    "@types/jasmine": "5.1.9",
+    "@types/jasmine": "5.1.10",
     "@types/node": "22.18.10",
     "@types/webpack-env": "1.18.8",
     "cross-env": "7.0.3",
