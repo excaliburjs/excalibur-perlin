@@ -26,7 +26,7 @@
     "@types/jasmine": "5.1.13",
     "@types/node": "22.19.1",
     "@types/webpack-env": "1.18.8",
-    "cross-env": "7.0.3",
+    "cross-env": "10.1.0",
     "excalibur": "~0.31.0",
     "excalibur-jasmine": "0.4.1",
     "jasmine-core": "5.12.1",
