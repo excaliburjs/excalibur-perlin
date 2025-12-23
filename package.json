@@ -44,6 +44,11 @@
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "^5.2.2"
   },
+  "overrides": {
+    "excalibur-jasmine": {
+      "excalibur": "~0.32.0"
+    }
+  },
   "peerDependencies": {
     "excalibur": "~0.32.0"
   }
