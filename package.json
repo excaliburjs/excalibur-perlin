@@ -38,7 +38,7 @@
     "pixelmatch": "5.3.0",
     "pngjs": "6.0.0",
     "puppeteer": "22.15.0",
-    "ts-loader": "9.5.4",
+    "ts-loader": "9.6.2",
     "typescript": "5.9.3",
     "webpack": "5.105.4",
     "webpack-cli": "5.1.4",
