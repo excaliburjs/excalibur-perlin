@@ -1,16 +1,28 @@
 {
   "name": "@excaliburjs/plugin-perlin",
-  "version": "0.32.0",
+  "version": "1.0.0-alpha.0",
   "description": "Perlin noise generator for the Excalibur game engine",
-  "main": "dist/excalibur-perlin.min.js",
-  "typings": "dist/src/index.d.ts",
+  "main": "build/esm/excalibur-perlin.min.js",
+  "typings": "build/esm/src/index.d.ts",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./build/esm/src/index.d.ts",
+      "import": "./build/esm/excalibur-perlin.js"
+    }
+  },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.test.js --open",
-    "watch": "webpack --progress --watch",
-    "build": "cross-env NODE_ENV=production webpack",
-    "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "karma start",
-    "test:integration": "webpack --config webpack.config.test.js && tsc ./test/integration/tests.ts && node ./test/integration/tests.js"
+    "start": "vite example",
+    "watch": "vite dev",
+    "types": "tsc --project tsconfig.json --declaration --emitDeclarationOnly",
+    "type-check": "tsc --noEmit",
+    "build:esm": "vite build && vite build --minify false",
+    "build": "npm run build:esm && npm run types",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest --project unit",
+    "test:e2e": "playwright test",
+    "test:e2e:update": "playwright test --update-snapshots"
   },
   "repository": {
     "type": "git",
@@ -23,33 +35,29 @@
   },
   "homepage": "https://github.com/excaliburjs/excalibur-perlin#readme",
   "devDependencies": {
-    "@types/jasmine": "5.1.15",
+    "@playwright/test": "1.63.0",
     "@types/node": "22.20.1",
-    "@types/webpack-env": "1.18.8",
-    "cross-env": "7.0.3",
-    "excalibur": "~0.32.0",
-    "excalibur-jasmine": "0.5.0",
-    "jasmine-core": "5.13.0",
-    "karma": "6.4.4",
-    "karma-chrome-launcher": "3.2.0",
-    "karma-jasmine": "5.1.0",
-    "karma-webpack": "5.0.1",
-    "node-static": "0.7.11",
-    "pixelmatch": "5.3.0",
-    "pngjs": "6.0.0",
-    "puppeteer": "22.15.0",
-    "ts-loader": "9.6.2",
-    "typescript": "5.9.3",
-    "webpack": "5.108.4",
-    "webpack-cli": "5.1.4",
-    "webpack-dev-server": "^5.2.2"
-  },
-  "overrides": {
-    "excalibur-jasmine": {
-      "excalibur": "~0.32.0"
-    }
+    "@vitest/browser-playwright": "5.0.3",
+    "excalibur": "0.33.0-alpha.247",
+    "pixelmatch": "7.2.0",
+    "typescript": "7.0.2",
+    "vite": "8.1.4",
+    "vite-plugin-node-polyfills": "0.28.0",
+    "vitest": "5.0.3"
   },
   "peerDependencies": {
-    "excalibur": "~0.32.0"
+    "excalibur": ">=0.33.0-alpha.247"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "onFail": "error",
+      "version": ">=24"
+    },
+    "packageManager": {
+      "name": "npm",
+      "onFail": "error",
+      "version": ">=11"
+    }
   }
 }

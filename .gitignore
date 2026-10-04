@@ -10,3 +10,6 @@ coverage/
 !files.d.ts
 !karma.conf.js
 !webpack*.js
+playwright-report/
+test-results/
+test/e2e/*-snapshots/*-actual.png
