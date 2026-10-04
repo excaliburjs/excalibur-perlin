@@ -1,4 +1,4 @@
-import { Color, Random, Util } from "excalibur";
+import { Color, Random } from "excalibur";
 
 
 /**

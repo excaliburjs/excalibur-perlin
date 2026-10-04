@@ -11,7 +11,7 @@ export default defineConfig({
   publicDir: __dirname,
   resolve: {
     alias: {
-      "@excalibur-perlin": path.resolve(__dirname, './src/')
+      "@excalibur-perlin": path.resolve(import.meta.dirname, './src/')
     }
   },
   test: {
@@ -27,10 +27,10 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: [
         ['html'],
-        ['lcov', { projectRoot: __dirname }],
+        ['lcov', { projectRoot: import.meta.dirname }],
         ['text-summary'],
       ],
-      reportsDirectory: path.join(__dirname, 'coverage')
+      reportsDirectory: path.join(import.meta.dirname, 'coverage')
     },
     projects: [
       path.resolve(__dirname, './test/unit/vitest.unit.config.ts')
