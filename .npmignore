@@ -6,5 +6,11 @@ coverage
 example
 test
 !dist/*
-**/webpack.config.js
 playwright.config.ts
+*.png
+dist/test/
+build/test/
+noise/
+renovate.json
+vite.config.ts
+vitest.config.ts
