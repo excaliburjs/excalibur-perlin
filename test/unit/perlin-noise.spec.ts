@@ -1,10 +1,8 @@
-import { ExcaliburMatchers, ensureImagesLoaded } from 'excalibur-jasmine';
 import { PerlinDrawer2D, PerlinGenerator } from '@excalibur-perlin';
 
 describe('Perlin Noise', () => {
   let generator: PerlinGenerator;
   beforeEach(() => {
-    jasmine.addMatchers(ExcaliburMatchers);
     generator = new PerlinGenerator({
       seed: 515,
       octaves: 15,

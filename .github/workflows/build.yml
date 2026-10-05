@@ -31,4 +31,52 @@ jobs:
           ${{ runner.os }}-node-
     - run: npm ci
     - run: npm run build
-    - run: npm run test
+    - name: Install Playwright browsers
+      run: npx playwright install chromium --with-deps
+    - run: npm run test:unit
+
+  e2e:
+    # Linux only on purpose: the golden masters are recorded as *-chromium-linux.png and
+    # will not match a mac/windows runner's rasterization.
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+        fetch-depth: 100
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'lts/*'
+        registry-url: 'https://registry.npmjs.org'
+    - uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - run: npm ci
+    - name: Install Playwright browsers
+      run: npx playwright install chromium --with-deps
+    - name: Install Xvfb and Fonts
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb fonts-liberation fonts-noto-core
+    - name: E2E snapshot tests
+      run: |
+        xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24 -ac +extension GLX +render -noreset" npm run test:e2e
+      shell: bash
+      env:
+        DISPLAY: ':99.0'
+    - name: Upload Playwright report
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report
+        path: |
+          playwright-report/
+          test-results/
+        if-no-files-found: ignore
+        retention-days: 7
