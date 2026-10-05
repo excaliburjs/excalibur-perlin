@@ -31,6 +31,8 @@ jobs:
           ${{ runner.os }}-node-
     - run: npm ci
     - run: npm run build
+    - name: Install Playwright browsers
+      run: npx playwright install chromium --with-deps
     - run: npm run test:unit
 
   e2e:
